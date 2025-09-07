@@ -107,46 +107,68 @@
 
 
 
-use std::f32::consts::PI;
-trait Shape {
-    fn area(&self) -> f32;
-}
+// use std::f32::consts::PI;
+// trait Shape {
+//     fn area(&self) -> f32;
+// }
 
-struct Rect {
-    width  : f32,
-    height : f32
-}
+// struct Rect {
+//     width  : f32,
+//     height : f32
+// }
 
-struct Circle {
-    radius: f32,
-}
+// struct Circle {
+//     radius: f32,
+// }
 
-impl Shape for Circle {
-    fn area(&self) -> f32{
-        return PI * self.radius * self.radius
-    }
-}
+// impl Shape for Circle {
+//     fn area(&self) -> f32{
+//         return PI * self.radius * self.radius
+//     }
+// }
 
-impl Shape for Rect {
-    fn area(&self) -> f32 {
-        return self.width * self.height
-    }
-}
+// impl Shape for Rect {
+//     fn area(&self) -> f32 {
+//         return self.width * self.height
+//     }
+// }
 
-fn print_area_of_shape<T: Shape>(s: T) {
-    println!("{}", s.area());
-}
+// fn print_area_of_shape<T: Shape>(s: T) {
+//     println!("{}", s.area());
+// }
 
+// fn main(){
+//     let r = Rect {
+//         width : 10.0,
+//         height: 10.0
+//     };
+
+//     let c = Circle {
+//         radius: 10.0
+//     };
+
+//     print_area_of_shape(c);
+//     print_area_of_shape(r);
+// }
+
+
+
+//Procedural Macros
+
+use std::{fmt::format, path::Display};
+
+#[derive(Debug)]
+struct User {
+    username: String,
+    password: String,
+    age: u32
+}
 fn main(){
-    let r = Rect {
-        width : 10.0,
-        height: 10.0
+    let u = User {
+        username: String::from("Rohan"),
+        password: String::from("Rohan"),
+        age: 32
     };
 
-    let c = Circle {
-        radius: 10.0
-    };
-
-    print_area_of_shape(c);
-    print_area_of_shape(r);
+    print!("{:?}", u);
 }
