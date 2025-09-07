@@ -51,12 +51,102 @@
 
 //GENERICS AND TRAITS
 
-fn main(){
-    let s1 = sum(1.1, 2.0);
-    let s2 = sum(1 , 2);
-    println!("{} {}",s1,s2);
+// fn main(){
+//     let s1 = sum(1.1, 2.0);
+//     let s2 = sum(1 , 2);
+//     println!("{} {}",s1,s2);
+// }
+
+// fn sum<T: std::ops::Add<Output = T>>(a: T, b: T) -> T{
+//     return a + b;
+// }
+
+
+
+// struct Rect {
+//     width  : u32,
+//     height : u32
+// }
+
+// impl Rect {
+//     fn area(&self) -> u32 {
+//         return self.width * self.height
+//     }
+// }
+
+// fn main(){
+//     let r = Rect {
+//         width  : 10,
+//         height : 10
+//     };
+
+//     print!("{}", r.area());
+// }
+
+
+
+// struct Rect<T> {
+//     width  : T,
+//     height : T
+// }
+
+// impl <T: std::ops::Mul<Output = T> + Copy> Rect <T> {
+//     fn area(&self) -> T {
+//        return self.width  * self.height
+//       }    
+// }
+
+// fn main(){
+//     let r = Rect {
+//         width  : 10,
+//         height : 10
+//     };
+//     print!("{}", r.area());
+//
+
+
+
+
+use std::f32::consts::PI;
+trait Shape {
+    fn area(&self) -> f32;
 }
 
-fn sum<T: std::ops::Add<Output = T>>(a: T, b: T) -> T{
-    return a + b;
+struct Rect {
+    width  : f32,
+    height : f32
+}
+
+struct Circle {
+    radius: f32,
+}
+
+impl Shape for Circle {
+    fn area(&self) -> f32{
+        return PI * self.radius * self.radius
+    }
+}
+
+impl Shape for Rect {
+    fn area(&self) -> f32 {
+        return self.width * self.height
+    }
+}
+
+fn print_area_of_shape<T: Shape>(s: T) {
+    println!("{}", s.area());
+}
+
+fn main(){
+    let r = Rect {
+        width : 10.0,
+        height: 10.0
+    };
+
+    let c = Circle {
+        radius: 10.0
+    };
+
+    print_area_of_shape(c);
+    print_area_of_shape(r);
 }
