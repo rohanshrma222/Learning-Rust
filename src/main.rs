@@ -155,20 +155,46 @@
 
 //Procedural Macros
 
-use std::{fmt::format, path::Display};
+// use std::{fmt::format, path::Display};
 
-#[derive(Debug)]
-struct User {
-    username: String,
-    password: String,
-    age: u32
-}
-fn main(){
-    let u = User {
-        username: String::from("Rohan"),
-        password: String::from("Rohan"),
-        age: 32
-    };
+// #[derive(Debug)]
+// struct User {
+//     username: String,
+//     password: String,
+//     age: u32
+// }
+// fn main(){
+//     let u = User {
+//         username: String::from("Rohan"),
+//         password: String::from("Rohan"),
+//         age: 32
+//     };
 
-    print!("{:?}", u);
-}
+//     print!("{:?}", u);
+// }
+
+
+
+//Serde
+
+// use serde::{Deserialize, Serialize};
+
+// #[derive(Serialize, Deserialize)]
+
+// struct User {
+//     username: String,
+//     password: String
+// }
+
+// fn main(){
+//     let u = User {
+//         username: String::from("Rohan"),
+//         password: String::from("16354")
+//     };
+
+//     let serialized_string = serde_json::to_string(&u);
+//     let user_string = serialized_string.unwrap();
+//     println!("{}",user_string);
+
+// }
+
