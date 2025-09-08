@@ -198,3 +198,29 @@
 
 // }
 
+
+
+use serde::{Deserialize, Serialize};
+use borsh::{to_vec, from_slice}; 
+use borsh_derive::{BorshDeserialize, BorshSerialize};
+
+#[derive(Serialize, Deserialize, BorshSerialize, BorshDeserialize, Debug)]
+struct User {
+    username: String,
+    password: String,
+}
+
+fn main() {
+    let u = User {
+        username: String::from("Rohan"),
+        password: String::from("16354"),
+    };
+
+    //  Borsh serialize
+    let v = to_vec(&u).unwrap();
+    println!("Borsh serialized bytes: {:?}", v);
+
+    //  Borsh deserialize
+    let u_back: User = from_slice(&v).unwrap();
+    println!("Deserialized User: {:?}", u_back);
+}
